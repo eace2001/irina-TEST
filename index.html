@@ -138,6 +138,45 @@ a{ color:inherit; }
 .stack{ display:grid; gap:.75rem; }
 .stack-2{ grid-template-columns:1fr 1fr; }
 
+/* ---- Reel: horizontal carousel of views for one work ----
+   Native scroll-snap does the work, so it drags on touch and
+   scrolls with a trackpad even with JavaScript disabled. */
+.reel{ position:relative; }
+.reel-track{
+  display:flex; gap:.75rem;
+  overflow-x:auto; overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none; -ms-overflow-style:none;
+}
+.reel-track::-webkit-scrollbar{ display:none; }
+.slide{
+  flex:0 0 100%; scroll-snap-align:center; margin:0;
+  display:flex; flex-direction:column; gap:.5rem;
+}
+.slide img, .slide video{
+  width:100%; height:auto; display:block;
+  border:1px solid var(--rule); background:#0B1418;
+}
+.slide figcaption{ font-size:.8125rem; color:var(--ink-soft); }
+
+.reel-nav{
+  display:flex; align-items:center; gap:.75rem;
+  margin-top:.85rem;
+}
+.reel-nav button{
+  display:grid; place-items:center;
+  width:2.1rem; height:2.1rem; padding:0;
+  background:transparent; border:1px solid var(--rule); color:var(--ink-soft);
+  cursor:pointer;
+}
+.reel-nav button:hover:not(:disabled){ border-color:var(--deep); color:var(--deep); }
+.reel-nav button:disabled{ opacity:.3; cursor:default; }
+.reel-nav button svg{ width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:1.6; }
+.reel-count{ font-size:.8125rem; color:var(--ink-soft); font-variant-numeric:tabular-nums; }
+
+/* Dark sections need the lighter hairline */
+.sound .reel-nav button, .anchor .reel-nav button{ border-color:var(--rule); }
+
 video{ display:block; width:100%; height:auto; background:#0B1418; border:1px solid var(--rule); }
 .sound video, .anchor video{ border-color:var(--rule); }
 
@@ -458,12 +497,27 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
 
         <article class="stratum">
           <div class="visual">
-            <div class="stack">
-              <video src="3-D/BrokenEden/IMG_8056.MOV"
-                     controls loop playsinline preload="metadata"></video>
-              <video src="3-D/BrokenEden/BE_gameplay-shortened.mp4"
-                     controls muted loop playsinline preload="metadata"></video>
-            </div>
+        <div class="reel" data-reel>
+          <div class="reel-track">
+            <figure class="slide">
+              <video src="3-D/BrokenEden/IMG_8056.mp4" controls loop playsinline preload="metadata"></video>
+              <figcaption>Installation view — projection on tulle and lace</figcaption>
+            </figure>
+            <figure class="slide">
+              <video src="3-D/BrokenEden/BE_gameplay-shortened.mp4" controls muted loop playsinline preload="metadata"></video>
+              <figcaption>Moving through the simulation</figcaption>
+            </figure>
+          </div>
+          <div class="reel-nav">
+            <button type="button" data-prev aria-label="Previous view">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <button type="button" data-next aria-label="Next view">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+            <span class="reel-count" aria-live="polite"></span>
+          </div>
+        </div>
           </div>
           <div>
             <h3>Broken Eden</h3>
@@ -493,15 +547,51 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
 
       <article class="work">
         <div class="visual">
-          <div class="stack">
-            <img src="3-D/Watchers/IMG_0086.png" alt="TK — describe the tower in full" loading="lazy">
-            <div class="stack stack-2">
+        <div class="reel" data-reel>
+          <div class="reel-track">
+            <figure class="slide">
+              <img src="3-D/Watchers/IMG_0086.png" alt="TK — describe the tower in full" loading="lazy">
+            </figure>
+            <figure class="slide">
+              <img src="3-D/Watchers/IMG_0095%20%281%29.png" alt="TK — describe this view" loading="lazy">
+            </figure>
+            <figure class="slide">
               <img src="3-D/Watchers/IMG_0096.png" alt="TK — describe the bird-woman" loading="lazy">
-              <img src="3-D/Watchers/IMG_0098.png" alt="TK — describe this detail" loading="lazy">
-            </div>
-            <video src="3-D/Watchers/Watchers_withSound.mp4"
-                   controls loop playsinline preload="metadata"></video>
+            </figure>
+            <figure class="slide">
+              <img src="3-D/Watchers/IMG_0098.png" alt="TK — describe this view" loading="lazy">
+            </figure>
+            <figure class="slide">
+              <img src="3-D/Watchers/IMG_0100.png" alt="TK — describe this view" loading="lazy">
+            </figure>
+            <figure class="slide">
+              <video src="3-D/Watchers/Watchers_withSound.mp4" controls loop playsinline preload="metadata"></video>
+              <figcaption>With the soundscape as performed</figcaption>
+            </figure>
+            <figure class="slide">
+              <video src="3-D/Watchers/Watchers_inFullScope.mp4" controls loop playsinline preload="metadata"></video>
+              <figcaption>The tower in full scope</figcaption>
+            </figure>
+            <figure class="slide">
+              <video src="3-D/Watchers/IMG_7680.mp4" controls loop playsinline preload="metadata"></video>
+            </figure>
+            <figure class="slide">
+              <video src="3-D/Watchers/IMG_9178.mp4" controls loop playsinline preload="metadata"></video>
+            </figure>
+            <figure class="slide">
+              <video src="3-D/Watchers/IMG_9179.mp4" controls loop playsinline preload="metadata"></video>
+            </figure>
           </div>
+          <div class="reel-nav">
+            <button type="button" data-prev aria-label="Previous view">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <button type="button" data-next aria-label="Next view">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+            <span class="reel-count" aria-live="polite"></span>
+          </div>
+        </div>
           <!-- watchers-02, -05, full-scope and clip-01..03 are also available -->
         </div>
         <div>
@@ -515,13 +605,37 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
 
       <article class="work">
         <div class="visual">
-          <div class="stack">
-            <img src="3-D/BT/BT1.jpeg" alt="TK — describe the full work" loading="lazy">
-            <div class="stack stack-2">
-              <img src="3-D/BT/BT3.jpg" alt="TK — describe this detail" loading="lazy">
-              <img src="3-D/BT/BT4.jpg" alt="TK — describe this detail" loading="lazy">
-            </div>
+        <div class="reel" data-reel>
+          <div class="reel-track">
+            <figure class="slide">
+              <img src="3-D/BT/BT1.jpeg" alt="TK — describe the full work" loading="lazy">
+            </figure>
+            <figure class="slide">
+              <img src="3-D/BT/BT2.jpeg" alt="TK — describe this view" loading="lazy">
+            </figure>
+            <figure class="slide">
+              <img src="3-D/BT/BT2.5.jpg" alt="TK — describe this view" loading="lazy">
+            </figure>
+            <figure class="slide">
+              <img src="3-D/BT/BT3.jpg" alt="TK — describe this view" loading="lazy">
+            </figure>
+            <figure class="slide">
+              <img src="3-D/BT/BT4.jpg" alt="TK — describe this view" loading="lazy">
+            </figure>
+            <figure class="slide">
+              <img src="3-D/BT/BT5.jpg" alt="TK — describe this view" loading="lazy">
+            </figure>
           </div>
+          <div class="reel-nav">
+            <button type="button" data-prev aria-label="Previous view">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <button type="button" data-next aria-label="Next view">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+            <span class="reel-count" aria-live="polite"></span>
+          </div>
+        </div>
           <!-- bt-02, bt-02b and bt-05 are also available if you want more views -->
         </div>
         <div>
@@ -595,7 +709,7 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Garden.heic" alt="TK — describe this work" loading="lazy">
+        <img src="2-D/Garden.jpg" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Garden</p>
           <p class="meta"><span class="tk">medium, year</span></p>
@@ -616,7 +730,7 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/OyfnPripetshik.heic" alt="TK — describe this work" loading="lazy">
+        <img src="2-D/OyfnPripetshik.jpg" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Oyfn Pripetshik</p>
           <p class="meta"><span class="tk">medium, year</span></p>
@@ -630,14 +744,14 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Pink%20Joy.heic" alt="TK — describe this work" loading="lazy">
+        <img src="2-D/Pink%20Joy.jpg" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Pink Joy</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/PrincessoftheHighwayMedian.heic" alt="TK — describe this work" loading="lazy">
+        <img src="2-D/PrincessoftheHighwayMedian.jpg" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Princess of the Highway Median</p>
           <p class="meta"><span class="tk">medium, year</span></p>
@@ -693,7 +807,7 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Swimcap.heic" alt="TK — describe this work" loading="lazy">
+        <img src="2-D/Swimcap.jpg" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Swimcap</p>
           <p class="meta"><span class="tk">medium, year</span></p>
@@ -742,7 +856,7 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/WonderfulWord.heic" alt="TK — describe this work" loading="lazy">
+        <img src="2-D/WonderfulWord.jpg" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Wonderful Word</p>
           <p class="meta"><span class="tk">medium, year</span></p>
@@ -1302,6 +1416,71 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
       startedAt = null;
       if (reduce) draw(1, performance.now()); else wake();
     }, 180);
+  });
+})();
+
+/* ---------- Reels ----------
+   Buttons page by one slide. The counter follows real scroll
+   position, so dragging on touch keeps it accurate. Videos pause
+   when they leave the frame — nothing plays offscreen. */
+(function () {
+  document.querySelectorAll('[data-reel]').forEach(function (reel) {
+    var track  = reel.querySelector('.reel-track');
+    var slides = Array.prototype.slice.call(track.children);
+    var prev   = reel.querySelector('[data-prev]');
+    var next   = reel.querySelector('[data-next]');
+    var count  = reel.querySelector('.reel-count');
+    if (slides.length < 2) { reel.querySelector('.reel-nav').hidden = true; return; }
+
+    var current = 0;
+
+    function indexFromScroll() {
+      var w = slides[0].getBoundingClientRect().width + 12; // slide + gap
+      return Math.min(slides.length - 1, Math.max(0, Math.round(track.scrollLeft / w)));
+    }
+    function paint() {
+      count.textContent = (current + 1) + ' / ' + slides.length;
+      prev.disabled = current === 0;
+      next.disabled = current === slides.length - 1;
+    }
+    function go(i) {
+      current = Math.min(slides.length - 1, Math.max(0, i));
+      track.scrollTo({ left: slides[current].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+      paint();
+    }
+
+    prev.addEventListener('click', function () { go(current - 1); });
+    next.addEventListener('click', function () { go(current + 1); });
+
+    var t;
+    track.addEventListener('scroll', function () {
+      clearTimeout(t);
+      t = setTimeout(function () {
+        var i = indexFromScroll();
+        if (i !== current) { current = i; paint(); }
+      }, 90);
+    }, { passive: true });
+
+    // arrow keys once the reel has focus
+    track.setAttribute('tabindex', '0');
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); go(current - 1); }
+    });
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) {
+            var v = en.target.querySelector('video');
+            if (v && !v.paused) v.pause();
+          }
+        });
+      }, { root: track, threshold: 0.5 });
+      slides.forEach(function (sl) { io.observe(sl); });
+    }
+
+    paint();
   });
 })();
 
