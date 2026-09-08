@@ -205,6 +205,7 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
   grid-template-columns:repeat(auto-fill,minmax(228px,1fr));
   align-items:start;
 }
+.papers--lead{ margin-top:0; padding-top:0; border-top:none; }
 .papers > h3{
   grid-column:1/-1; margin:0 0 .5rem;
   font-family:var(--display); font-weight:300; font-size:clamp(1.25rem,2.4vw,1.6rem);
@@ -391,7 +392,7 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
   grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);
   align-items:start;
 }
-.about .plate{ aspect-ratio:4/5; }
+.about .plate, .about > img{ aspect-ratio:4/5; object-fit:cover; width:100%; height:auto; }
 .about p{ margin:0 0 1.15rem; max-width:var(--measure); }
 .about p:last-child{ margin-bottom:0; }
 
@@ -427,7 +428,7 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
   .leaf, .release, .about{ grid-template-columns:1fr; }
   .stratum:nth-child(even) .visual,
   .work:nth-child(even) .visual{ order:0; }
-  .about .plate{ max-width:320px; }
+  .about .plate, .about > img{ max-width:320px; }
   .show{ grid-template-columns:1fr; gap:.15rem; }
   .show .year{ padding-top:0; }
 
@@ -453,9 +454,9 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">
       <ul>
-        <li><a href="#cemeteries">Cemeteries</a></li>
+        <li><a href="#cemeteries">Broken Eden</a></li>
         <li><a href="#sculpture">Sculpture</a></li>
-        <li><a href="#drawings">Drawings</a></li>
+        <li><a href="#drawings">Painting</a></li>
         <li><a href="#sound">Sound</a></li>
         <li><a href="#exhibitions">Exhibitions</a></li>
         <li><a href="#about">About</a></li>
@@ -477,50 +478,30 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
 
       <div class="anchor-intro">
         <div>
-          <!-- PLACEHOLDER TITLE — replace with the project's real name -->
-          <h2>What Grows There</h2>
-          <p class="where">Eastern Germany, Czechia, Latvia, Poland. 2023—</p>
+          <h2>Broken Eden</h2>
+          <p class="where">Simulation in Unreal Engine 5, projected onto tulle and lace<br>Eastern Germany, Czechia, Latvia, Poland. 2023—</p>
         </div>
         <div>
           <p>Mourners brought plants to these graves for generations. Species used in Ashkenazi herbalism were carried in, planted, left behind — and many of them naturalized. The people stopped coming. The plants did not stop growing.</p>
           <p>So the flora of a Jewish cemetery in Central or Eastern Europe is not incidental to it. It is a record, held in living tissue, of a practice and a population that were ended. The environment carries the memory of who used to persist there, and it keeps carrying it under neglect — sometimes more faithfully than under maintenance.</p>
-          <p>The work runs in three registers: botanical fieldwork, a laser survey, and a simulation. The argument is the same in each. These sites hold ecological value and memorial value at once, and managing them well means refusing to trade either away.</p>
         </div>
       </div>
 
       <div class="strata">
-
-        <article class="stratum">
-          <div class="visual"><div class="plate"></div></div>
-          <div>
-            <h3>Reading the flora</h3>
-            <p class="meta">Ethnobotanical field survey across four countries</p>
-            <p>Cataloguing which herbalism species are still present, where they sit relative to the stones, and how their distribution shifts across sites under very different regimes of care — from actively groomed grounds to ones under fifty years of forest.</p>
-            <p>Alongside the species lists, qualitative records of the flora and fauna that have moved in.</p>
-            <!-- TK: name three or four species and what they were used for. -->
-          </div>
-        </article>
-
-        <article class="stratum">
-          <div class="visual"><div class="plate"></div></div>
-          <div>
-            <h3>The scan</h3>
-            <p class="meta">LiDAR survey with the Department of Culture, Rzeszów</p>
-            <p>A three-dimensional archive of the cemetery's exact topography at the moment the scans were taken — every leaning stone, every depression in the ground, every canopy edge, fixed as a point cloud.</p>
-            <p>It is a strange kind of preservation. It saves nothing physical and stops no decay. What it holds is a single instant of a place that is still changing, which turns out to be the same thing a memorial does.</p>
-          </div>
-        </article>
-
         <article class="stratum">
           <div class="visual">
         <div class="reel" data-reel>
           <div class="reel-track">
             <figure class="slide">
-              <video src="3-D/BrokenEden/IMG_8056.mp4?v=1" controls loop playsinline preload="metadata"></video>
+              <video controls loop playsinline preload="metadata">
+                <source src="3-D/BrokenEden/IMG_8056.mp4?v=1" type="video/mp4">
+              </video>
               <figcaption>Installation view — projection on tulle and lace</figcaption>
             </figure>
             <figure class="slide">
-              <video src="3-D/BrokenEden/BE_gameplay-shortened.mp4?v=1" controls muted loop playsinline preload="metadata"></video>
+              <video controls muted loop playsinline preload="metadata">
+                <source src="3-D/BrokenEden/BE_gameplay-shortened.mp4?v=1" type="video/mp4">
+              </video>
               <figcaption>Moving through the simulation</figcaption>
             </figure>
           </div>
@@ -536,18 +517,14 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
         </div>
           </div>
           <div>
-            <h3>Broken Eden</h3>
-            <p class="meta">Simulation built in Unreal Engine 5, projected onto tulle and lace</p>
-
             <blockquote class="epigraph">
               We lived contentedly out of time in the kalyna hedge, until bombs cratered either side. There were two terrible winters when the waxwings would not come, even for the latest berries in the leanest freezes. The family had no choice but to relocate.
             </blockquote>
 
-            <p>The cemetery as a city of the dead, where green and gray diffuse in distant memory. A space to move through at your own pace, without a guide — the scan data made walkable, so that the plants are found rather than pointed at.</p>
+            <p>The cemetery as a city of the dead, where green and gray diffuse in distant memory. A space to move through at your own pace, without a guide — so that the plants are found rather than pointed at.</p>
             <p>The projection falls through layered tulle and lace and never resolves on a single surface. The image sits in the air at several depths at once, present and not quite legible, which is the condition the work is about.</p>
           </div>
         </article>
-
       </div>
     </div>
   </section>
@@ -676,53 +653,13 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
   <!-- ================= DRAWINGS ================= -->
   <section class="section shell" id="drawings">
     <div class="section-head">
-      <h2>Drawings</h2>
-      <p class="lede">Each made against a text — a woman calling on night to do her violence for her, and a woman who is a field of wild carrot taking ground by force.</p>
+      <h2>Painting and drawing</h2>
+      <p class="lede">Work on paper and panel, alongside the sculpture.</p>
     </div>
 
-    <div class="leaves">
-
-      <article class="leaf">
-        <div class="visual"><div class="plate" style="--ar:3/4"></div></div>
-        <div>
-          <h3>An Exchange of Goods</h3>
-          <p class="materials"><span class="tk">medium</span> <span class="tk">dimensions</span> <span class="tk">year</span></p>
-
-          <!-- ⚠ RIGHTS CHECK BEFORE PUBLISHING.
-               Margolin's Yiddish originals are old enough to be out of
-               copyright, but an English TRANSLATION is separately
-               copyrighted. If Irina translated it herself, paste it here
-               and credit her as translator. .verse keeps line breaks. -->
-          <p class="verse"><span class="tk">verse — pending rights check</span></p>
-
-          <p class="attrib">Compiled from selected works of Anna Margolin. Translated from the Yiddish.</p>
-        </div>
-      </article>
-
-      <article class="leaf">
-        <div class="visual"><div class="plate" style="--ar:3/4"></div></div>
-        <div>
-          <h3>Queen Anne's Lace</h3>
-          <p class="materials"><span class="tk">medium</span> <span class="tk">dimensions</span> <span class="tk">year</span></p>
-
-          <!-- Williams, Sour Grapes (1921) — public domain in the US. -->
-          <p class="verse"><span class="tk">verse — safe to paste, public domain</span></p>
-
-          <p class="attrib">From "Queen-Anne's-Lace" by William Carlos Williams, <i>Sour Grapes</i>, 1921.</p>
-        </div>
-      </article>
-
-    </div>
-
-    <!-- ————————————————————————————————————————————
-         Everything in the 2-D folder, pathed and ready.
-         Two jobs before publishing:
-         1. Delete anything that is not finished work.
-         2. Replace every alt="TK — ..." with a real description.
-            Titles came from the filenames; correct any that are wrong.
-         ———————————————————————————————————————————— -->
-    <div class="papers">
-      <h3>Works on paper</h3>
+    <!-- Titles came from the filenames — correct any that are wrong,
+         and replace every alt="TK — ..." with a real description. -->
+    <div class="papers papers--lead">
       <figure class="paper">
         <img src="2-D/AutumnLandscape.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
@@ -896,7 +833,11 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
       </div>
 
       <article class="release">
-        <div class="visual"><div class="plate" style="--ar:1"></div></div>
+        <div class="visual">
+          <img src="Stock%20Images/Breezemonger%20Cover.jpg?v=1"
+               alt="Cover art for the album Breezemonger."
+               loading="lazy" style="border:1px solid rgba(230,227,216,.2)">
+        </div>
         <div>
           <h3>Breezemonger</h3>
           <p class="materials">Album. Trust the Crow with Artyom. Released 18 July <span class="tk">year</span></p>
@@ -959,7 +900,9 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
   <!-- ================= ABOUT ================= -->
   <section class="section shell" id="about">
     <div class="about">
-      <div class="plate"></div>
+      <img src="Stock%20Images/Irina%20PFP.jpg?v=1"
+           alt="Portrait of Irina Spector Delgass."
+           loading="lazy" style="border:1px solid var(--rule)">
       <div>
         <div class="section-head" style="margin-bottom:2rem"><h2>About</h2></div>
         <p>Irina Spector Delgass is a multimedia artist working across sculpture, music, and painting. Having concentrated in Slavic Studies and Geophysics at Stanford University, her work describes a dualistic Russo-American cosmology, drawing from cold-war and postmodern symbolism to create fantastically apocalyptic structures and spaces. Spector Delgass incorporates traditional carpentry and furnituremaking techniques in wood with other materials from bones and eggshells to metalworking and taxidermy.</p>
