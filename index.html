@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
-<script>document.documentElement.className="js";</script>
 <!-- ============================================================
      CACHE VERSION
      Every image and video URL ends in ?v=1. Browsers cache by
@@ -155,25 +154,6 @@ a{ color:inherit; }
 .stack{ display:grid; gap:.75rem; }
 .stack-2{ grid-template-columns:1fr 1fr; }
 
-/* ---- Progressive image loading ----
-   Nothing here runs without JS: the .js class is set by an inline
-   script, so with scripting off every image is simply visible. */
-.js img[loading="lazy"]{
-  opacity:0; transition:opacity .45s ease;
-  background:var(--bone-lift);
-}
-.js img[loading="lazy"]:not(.is-loaded){
-  min-height:200px;   /* holds the row open so the page stops jumping */
-}
-.js img[loading="lazy"].is-loaded{ opacity:1; min-height:0; }
-.js .sound img[loading="lazy"]{ background:#16282F; }
-
-/* A video that has downloaded nothing yet should still look deliberate */
-video{ min-height:180px; }
-
-@media (prefers-reduced-motion:reduce){
-  .js img[loading="lazy"]{ opacity:1; transition:none; }
-}
 
 /* ---- Reel: horizontal carousel of views for one work ----
    Native scroll-snap does the work, so it drags on touch and
@@ -514,13 +494,13 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
         <div class="reel" data-reel>
           <div class="reel-track">
             <figure class="slide">
-              <video controls loop playsinline preload="none">
+              <video controls loop playsinline preload="metadata">
                 <source src="3-D/BrokenEden/IMG_8056.mp4?v=1" type="video/mp4">
               </video>
               <figcaption>Installation view — projection on tulle and lace</figcaption>
             </figure>
             <figure class="slide">
-              <video controls muted loop playsinline preload="none">
+              <video controls muted loop playsinline preload="metadata">
                 <source src="3-D/BrokenEden/BE_gameplay-shortened.mp4?v=1" type="video/mp4">
               </video>
               <figcaption>Moving through the simulation</figcaption>
@@ -564,40 +544,40 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
         <div class="reel" data-reel>
           <div class="reel-track">
             <figure class="slide">
-              <img src="3-D/Watchers/IMG_0086.jpg?v=1" alt="TK — describe the tower in full" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="3-D/Watchers/IMG_0086.jpg?v=1" alt="TK — describe the tower in full" loading="lazy">
             </figure>
             <figure class="slide">
-              <img src="3-D/Watchers/IMG_0095%20%281%29.jpg?v=1" alt="TK — describe this view" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="3-D/Watchers/IMG_0095%20%281%29.jpg?v=1" alt="TK — describe this view" loading="lazy">
             </figure>
             <figure class="slide">
-              <img src="3-D/Watchers/IMG_0096.jpg?v=1" alt="TK — describe the bird-woman" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="3-D/Watchers/IMG_0096.jpg?v=1" alt="TK — describe the bird-woman" loading="lazy">
             </figure>
             <figure class="slide">
-              <img src="3-D/Watchers/IMG_0098.jpg?v=1" alt="TK — describe this view" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="3-D/Watchers/IMG_0098.jpg?v=1" alt="TK — describe this view" loading="lazy">
             </figure>
             <figure class="slide">
-              <img src="3-D/Watchers/IMG_0100.jpg?v=1" alt="TK — describe this view" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="3-D/Watchers/IMG_0100.jpg?v=1" alt="TK — describe this view" loading="lazy">
             </figure>
             <figure class="slide">
-              <video src="3-D/Watchers/Watchers_withSound.mp4?v=1" controls loop playsinline preload="none"></video>
+              <video src="3-D/Watchers/Watchers_withSound.mp4?v=1" controls loop playsinline preload="metadata"></video>
               <figcaption>With the soundscape as performed</figcaption>
             </figure>
             <figure class="slide">
-              <video src="3-D/Watchers/Watchers_inFullScope.mp4?v=1" controls loop playsinline preload="none"></video>
+              <video src="3-D/Watchers/Watchers_inFullScope.mp4?v=1" controls loop playsinline preload="metadata"></video>
               <figcaption>The tower in full scope</figcaption>
             </figure>
             <figure class="slide">
-              <video controls loop playsinline preload="none">
+              <video controls loop playsinline preload="metadata">
                 <source src="3-D/Watchers/IMG_7680%20%281%29.mp4?v=1" type="video/mp4">
               </video>
             </figure>
             <figure class="slide">
-              <video controls loop playsinline preload="none">
+              <video controls loop playsinline preload="metadata">
                 <source src="3-D/Watchers/IMG_9178%20%281%29.mp4?v=1" type="video/mp4">
               </video>
             </figure>
             <figure class="slide">
-              <video controls loop playsinline preload="none">
+              <video controls loop playsinline preload="metadata">
                 <source src="3-D/Watchers/IMG_9179%20%281%29.mp4?v=1" type="video/mp4">
               </video>
             </figure>
@@ -616,10 +596,10 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
         </div>
         <div>
           <h3>Watchers: The End</h3>
-          <p class="materials">Wood, mold-made and taxidermied elements, sound, 2026. <span class="tk">dimensions</span></p>
+          <p class="materials">Wood, mold-made and taxidermied elements, sound, 2026</p>
           <p>A double tower reaching upward and protruding down through itself. At the top, a feathered bird-woman staring into the stars on the final night.</p>
           <p>The piece required skills she did not have when she started it. Over a year she learned the carpentry needed to build the tower, and mold-making and taxidermy to make the bird-woman. It was installed in the CCRMA Listening Room at Stanford and shown with live soundscapes mixed to accompany the end of a world adjacent to our own.</p>
-          <p class="credits">With thanks to Taz Laursen, Eva Astrid, and Trish for the sculpture lab, the woodshop, and the rebuild. <span class="tk">full names</span></p>
+          <p class="credits">With thanks to Taz Laursen, Eva Astrid, and Trish for the sculpture lab, the woodshop, and the install.</p>
         </div>
       </article>
 
@@ -628,22 +608,22 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
         <div class="reel" data-reel>
           <div class="reel-track">
             <figure class="slide">
-              <img src="3-D/BT/BT1.jpeg?v=1" alt="TK — describe the full work" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="3-D/BT/BT1.jpeg?v=1" alt="TK — describe the full work" loading="lazy">
             </figure>
             <figure class="slide">
-              <img src="3-D/BT/BT2.jpeg?v=1" alt="TK — describe this view" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="3-D/BT/BT2.jpeg?v=1" alt="TK — describe this view" loading="lazy">
             </figure>
             <figure class="slide">
-              <img src="3-D/BT/BT2.5.jpg?v=1" alt="TK — describe this view" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="3-D/BT/BT2.5.jpg?v=1" alt="TK — describe this view" loading="lazy">
             </figure>
             <figure class="slide">
-              <img src="3-D/BT/BT3.jpg?v=1" alt="TK — describe this view" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="3-D/BT/BT3.jpg?v=1" alt="TK — describe this view" loading="lazy">
             </figure>
             <figure class="slide">
-              <img src="3-D/BT/BT4.jpg?v=1" alt="TK — describe this view" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="3-D/BT/BT4.jpg?v=1" alt="TK — describe this view" loading="lazy">
             </figure>
             <figure class="slide">
-              <img src="3-D/BT/BT5.jpg?v=1" alt="TK — describe this view" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="3-D/BT/BT5.jpg?v=1" alt="TK — describe this view" loading="lazy">
             </figure>
           </div>
           <div class="reel-nav">
@@ -660,7 +640,7 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
         </div>
         <div>
           <h3>Bila Tserkva / Shvartse Tumeh</h3>
-          <p class="materials">Steel, wire, birch, poplar, egg shells, ink, two chicken skeletons. <span class="tk">dimensions</span> <span class="tk">year</span></p>
+          <p class="materials">Steel, wire, birch, poplar, egg shells, ink, two chicken skeletons, 2024</p>
 
           <blockquote class="epigraph">
             A static animation of history befalling a town with two intertwined histories. All will be rendered in the broth.
@@ -682,161 +662,161 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
          and replace every alt="TK — ..." with a real description. -->
     <div class="papers papers--lead">
       <figure class="paper">
-        <img src="2-D/AutumnLandscape.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/AutumnLandscape.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Autumn Landscape</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Garden.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Garden.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Garden</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Graphic%20Panel.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Graphic%20Panel.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Graphic Panel</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Hat.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Hat.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Hat</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/OyfnPripetshik.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/OyfnPripetshik.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Oyfn Pripetshik</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Pink%20Head.JPG?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Pink%20Head.JPG?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Pink Head</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Pink%20Joy.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Pink%20Joy.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Pink Joy</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/PrincessoftheHighwayMedian.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/PrincessoftheHighwayMedian.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Princess of the Highway Median</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Profane%20Embryo.jpeg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Profane%20Embryo.jpeg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Profane Embryo</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Siren_s%20Song.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Siren_s%20Song.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Siren's Song</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Sketchbook%20Pages%201.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Sketchbook%20Pages%201.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Sketchbook Pages I</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Sketchbook%20Pages%202.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Sketchbook%20Pages%202.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Sketchbook Pages II</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Sounds%20of%20Nature.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Sounds%20of%20Nature.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Sounds of Nature</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Spell%20the%20Wind.jpeg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Spell%20the%20Wind.jpeg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Spell the Wind</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Storm.resized.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Storm.resized.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Storm</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Swimcap.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Swimcap.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Swimcap</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Tear.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Tear.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Tear</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/The%20Baby%20is%20Mine.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/The%20Baby%20is%20Mine.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">The Baby Is Mine</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/TheRing.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/TheRing.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">The Ring</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Truth%20in%20Music.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Truth%20in%20Music.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Truth in Music</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Venus%20Waited.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Venus%20Waited.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Venus Waited</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/Wake.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/Wake.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Wake</p>
           <p class="meta"><span class="tk">medium, year</span></p>
         </figcaption>
       </figure>
       <figure class="paper">
-        <img src="2-D/WonderfulWord.jpg?v=1" alt="TK — describe this work" loading="lazy" decoding="async" fetchpriority="low">
+        <img src="2-D/WonderfulWord.jpg?v=1" alt="TK — describe this work" loading="lazy">
         <figcaption>
           <p class="title">Wonderful Word</p>
           <p class="meta"><span class="tk">medium, year</span></p>
@@ -857,7 +837,7 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
         <div class="visual">
           <img src="Stock%20Images/Breezemonger%20Cover.jpg?v=1"
                alt="Cover art for the album Breezemonger."
-               loading="lazy" decoding="async" fetchpriority="low" style="border:1px solid rgba(230,227,216,.2)">
+               loading="lazy" style="border:1px solid rgba(230,227,216,.2)">
         </div>
         <div>
           <h3>Breezemonger</h3>
@@ -923,7 +903,7 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
     <div class="about">
       <img src="Stock%20Images/Irina%20PFP.jpg?v=1"
            alt="Portrait of Irina Spector Delgass."
-           loading="lazy" decoding="async" fetchpriority="low" style="border:1px solid var(--rule)">
+           loading="lazy" style="border:1px solid var(--rule)">
       <div>
         <div class="section-head" style="margin-bottom:2rem"><h2>About</h2></div>
         <p>Irina Spector Delgass is a multimedia artist working across sculpture, music, and painting. Having concentrated in Slavic Studies and Geophysics at Stanford University, her work describes a dualistic Russo-American cosmology, drawing from cold-war and postmodern symbolism to create fantastically apocalyptic structures and spaces. Spector Delgass incorporates traditional carpentry and furnituremaking techniques in wood with other materials from bones and eggshells to metalworking and taxidermy.</p>
@@ -943,7 +923,7 @@ video{ display:block; width:100%; height:auto; background:#0B1418; border:1px so
         <h2>Contact</h2>
         <p class="lede">For available work, commissions, exhibitions, or research correspondence.</p>
       </div>
-      <a class="email" href="mailto:hello@example.com">hello@example.com</a>
+      <a class="email" href="mailto:delgass@stanford.edu">delgass@stanford.edu</a>
 
       <div class="colophon">
         <ul>
